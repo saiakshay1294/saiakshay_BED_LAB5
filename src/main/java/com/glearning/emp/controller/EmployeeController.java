@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.glearning.emp.model.Employee;
 import com.glearning.emp.service.EmployeeService;
 
 @Controller
@@ -28,6 +29,17 @@ public class EmployeeController {
 		model.addAttribute("employee", employeeService.getEmployeeById(id));
 		return "edit_employee";
 	}
+	
+	@GetMapping("/employees/new")
+	public String createemployeeForm(Model model) {
+
+		// create employee object to hold employee form data
+		Employee employee = new Employee();
+		model.addAttribute("employee", employee);
+		return "create_employee";
+
+	}
+
 	
 	@GetMapping("/employees/{id}")
 	public String deleteemployee(@PathVariable Long id) {
