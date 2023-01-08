@@ -3,13 +3,16 @@ server:
 
 spring:
   datasource:
-    username: sa
+    username: root
     password: welcome
-    url: jdbc:h2:mem:emp_db
+    url: jdbc:mysql://localhost:3306/ems?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
   jpa:
-    generate-ddl: true
     show-sql: true
+    hibernate:
+      ddl-auto: update
     properties:
+      dialect:
+        hibernate: org.hibernate.dialect.MySQL8Dialect
       hibernate:
         properties: 
           format-sql: true
